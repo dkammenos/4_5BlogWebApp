@@ -1,0 +1,65 @@
+<%- include("partials/header.ejs") %>
+
+
+
+     <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h4>John's Blog</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#section1">Home</a></li>
+          <li><a href="#section2">Friends</a></li>
+          <li><a href="#section3">Family</a></li>
+          <li><a href="#section3">Photos</a></li>
+        </ul><br>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Blog..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div>
+        <h2>Εισαγωγή BlogPost</h2>
+        <form action="/submit" method="post">
+          <div class="form-group">
+            <label for="title">Τίτλος:</label>
+            <input type="text" class="form-control" id="title" placeholder="Δώσε τον τίτλο" name="title">
+          </div>
+          <div class="form-group">
+            <label for="content">Σχόλιο:</label>
+            <textarea class="form-control" name="content" placeholder="Γράψτε τις ιδέες σας"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-default">Αποστολή </button>
+        </form>
+      </div>
+      <div class="col-sm-9">
+        <h4><small>RECENT POSTS</small></h4>
+        <hr>
+        <% if (locals.posts) { %>
+            <% for (i=0; i<posts.length; i++){ %>
+            <h2><a href="/editpost/<%=i %>"><%= posts[i].title %></a></h2>
+         
+                        <!-- <p>Some text about the post..</p> -->
+                  
+           
+          
+          <p>Λοιπόν εδώ <%= posts[i].content %></p>
+          <a href="/delete/<%=i %>" class="btn btn-danger" role="button">Διαγραφή Σχολίου</a>
+          <%   } %>
+
+      <%   } %>
+       
+                <br>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <%- include("partials/footer.ejs") %>

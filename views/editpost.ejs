@@ -1,0 +1,67 @@
+<%- include("partials/header.ejs") %>
+
+
+
+     <div class="row content">
+      <div class="col-sm-3 sidenav">
+        <h4>John's Blog</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="active"><a href="#section1">Home</a></li>
+          <li><a href="#section2">Friends</a></li>
+          <li><a href="#section3">Family</a></li>
+          <li><a href="#section3">Photos</a></li>
+        </ul><br>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search Blog..">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+      <div>
+        <h2>Επεξεργασία BlogPost</h2>
+        <form action="/update/<%=index %>" method="post">
+          <div class="form-group">
+            <label for="title">Τίτλος:</label>
+            <input type="text" class="form-control" id="title" placeholder="Δώσε τον τίτλο" name="title" value="<%= posts[index].title %>">
+          </div>
+          <div class="form-group">
+            <!-- <input type="text" class="form-control" id="title" placeholder="Δώσε τον τίτλο" name="title" value="<%= posts[index].content %>"> -->
+            <textarea class="form-control" name="content"><%= posts[index].content %></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-default">Αποστολή </button>
+        </form>
+      </div>
+      <div class="col-sm-9">
+        <h4><small>RECENT POSTS</small></h4>
+        <hr>
+        <% if (locals.posts) { %>
+            <% for (i=0; i<posts.length; i++){ %>
+            <h2><a href="/post/<%= posts[i].title %>"><%= posts[i].title %></a></h2>
+            <p> Σχόλιο</p>
+            <p>Λοιπόν εδώ <%= posts[i].content %></p>
+            <%   } %>
+  
+        <%   } %>
+         
+                  <br>
+         
+                        <!-- <p>Some text about the post..</p> -->
+                    </div>
+                    </div>
+                </div>
+           
+          
+       
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <%- include("partials/footer.ejs") %>
