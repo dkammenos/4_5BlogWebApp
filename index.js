@@ -60,7 +60,7 @@ function deletePost(index) {
         console.log(`Post titled "${deletedPost[0].title}" deleted successfully!`);
         console.log("All Posts After Deletion:", blogPosts);
     } else {
-        console.log("Post not found!");
+        console.log("Δεν έγινε ανάρτηση του Post!");
     }
 }
 
